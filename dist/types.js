@@ -1,2 +1,2 @@
-export const JobRaw = {};
+export {};
 //# sourceMappingURL=types.js.map
