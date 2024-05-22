@@ -1,19 +1,48 @@
 import fs from "fs"
-import { JobRaw } from "./types.js"
+import { Job, JobRaw, RawSkill,nullObjectSkill } from "./types.js"
 
 
 const jobsRaw : JobRaw[]= JSON.parse(fs.readFileSync("./src/data/jobs.json","utf8"))
 
-const skillsRaw = JSON.parse(fs.readFileSync("./src/data/skills.json","utf8"))
+const skillsRaw : RawSkill= JSON.parse(fs.readFileSync("./src/data/skills.json","utf8"))
 
 export const getJobs=()=>{
-return jobsRaw
-
+    const jobs : Job[]=[];
+    jobsRaw.forEach((jobRaw)=>{
+        const job : any= {
+            ...jobRaw,
+            skills: buildSkills(jobRaw.skillList)
+        }
+        jobs.push(job)
+    })
+    return jobs
 }
 
 
 export const getSkills =()=>{
     return skillsRaw
+}
+
+const buildSkills = (skillList:string)=>{
+    const skills:RawSkill[]=[];
+    const skillIdCodes=skillList.split(",").map((m)=>m.trim())
+    skillIdCodes.forEach((skillIdCode)=>{
+        const _skill = skillsRaw[skillIdCode];
+        if(_skill===undefined){
+            const skill: RawSkill={
+                ...nullObjectSkill,
+                idCode: skillIdCode
+            }
+            skills.push(skill)
+        }else{
+            const skill:RawSkill={
+                ..._skill,
+                skillIdCode
+            }
+            skills.push(skill);
+        }
+    })
+    return skills
 }
 
 export const getApiDocHTML =()=>{

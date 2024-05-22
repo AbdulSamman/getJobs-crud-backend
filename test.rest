@@ -1,0 +1,10 @@
+@url=http://localhost:3066
+
+### GET base route
+GET {{url}}
+
+### GET Jobs route
+GET {{url}}/jobs
+
+### GET skills route
+GET {{url}}/skills
