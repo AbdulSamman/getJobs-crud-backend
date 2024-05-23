@@ -1,5 +1,18 @@
 import fs from "fs";
 import { nullObjectSkill } from "./types.js";
+// lowdb ist db liest json datei
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { Low } from 'lowdb';
+import { JSONFile } from 'lowdb/node';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const dbFile = join(__dirname, `../src/data/db.json`);
+const adapter = new JSONFile(dbFile);
+const db = new Low(adapter, 0);
+await db.read();
+export const getTest = () => {
+    return db.data.test;
+};
 const jobsRaw = JSON.parse(fs.readFileSync("./src/data/jobs.json", "utf8"));
 const skillsRaw = JSON.parse(fs.readFileSync("./src/data/skills.json", "utf8"));
 export const getJobs = () => {
@@ -7,7 +20,11 @@ export const getJobs = () => {
     jobsRaw.forEach((jobRaw) => {
         const job = {
             ...jobRaw,
-            skills: buildSkills(jobRaw.skillList)
+            skills: buildSkills(jobRaw.skillList),
+            toDo: {
+                text: jobRaw.publicationDate + " send application: ",
+                url: jobRaw.url
+            }
         };
         jobs.push(job);
     });

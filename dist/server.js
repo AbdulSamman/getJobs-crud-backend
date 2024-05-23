@@ -9,6 +9,10 @@ app.use(cors());
 app.get("/", (req, res) => {
     res.send(model.getApiDocHTML());
 });
+// lowdb
+app.get("/test", (req, res) => {
+    res.send(model.getTest());
+});
 app.get("/jobs", (req, res) => {
     res.json(model.getJobs());
 });

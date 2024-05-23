@@ -28,7 +28,7 @@ export type Job = {
     skillList: string;
     publicationDate: string;
     skills: RawSkill[]
-
+    toDo:ToDo
   };
 export const nullObjectSkill ={
     idCode:"",
@@ -37,3 +37,8 @@ export const nullObjectSkill ={
     description:""
 
 }
+export type ToDo={
+    text:string,
+    url:string
+}
+
