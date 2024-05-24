@@ -32,9 +32,6 @@ app.get("/jobsLowdb/:id", async (req, res) => {
         res.status(200).json(getaJob);
     }
 });
-app.get("/skillsLowdb", (req, res) => {
-    res.json(model.getSkillsLowdb());
-});
 app.delete('/jobsLowdb/:id', async (req, res) => {
     const id = Number(req.params.id);
     const deletedObject = await model.deleteJob(id);
@@ -50,6 +47,9 @@ app.delete('/jobsLowdb/:id', async (req, res) => {
             article: deletedObject
         });
     }
+});
+app.get("/skillsLowdb", (req, res) => {
+    res.json(model.getSkillsLowdb());
 });
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

@@ -13,26 +13,8 @@ const adapter = new JSONFile(dbFile);
 const db:any = new Low(adapter,0);
 await db.read();
 
-export const getJobsLowdb=()=>{
-    return db.data.jobs
-}
-
-export const getSkillsLowdb=()=>{
-
-//     const skillInfos:any=db.data.skillsInfo
-//     const _skill=skillInfos[idCode]
-//      if(_skill === undefined){
-// ...nullObjectSkill,
-//         idCode
-//      }else{
-//         ..._skill,
-//         idCode
-//      }
-return db.data.skillsInfo
-}
-
+// data jsonFIle
 const jobsRaw : JobRaw[]= JSON.parse(fs.readFileSync("./src/data/jobs.json","utf8"))
-
 const skillsRaw : RawSkill= JSON.parse(fs.readFileSync("./src/data/skills.json","utf8"))
 
 export const getJobs=()=>{
@@ -94,6 +76,41 @@ export const getaJob =async(id:number)=>{
     const job  = db.data.jobs.find((m:Job)=>m.id === id)
     return job
 }
+
+
+export const getJobsLowdb=()=>{
+    const _jobs:any =db.data.jobs
+    const jobs : Job[]=[];
+    _jobs.forEach((jobRaw:Job)=>{
+        const job : Job= {
+            ...jobRaw,
+            skills: buildSkills(jobRaw.skillList),
+            toDo:{
+                text: jobRaw.publicationDate + " send application: ",
+                url:jobRaw.url
+            }
+        }
+        jobs.push(job)
+    })
+    return jobs
+}
+
+
+
+export const getSkillsLowdb=()=>{
+
+//     const skillInfos:any=db.data.skillsInfo
+//     const _skill=skillInfos[idCode]
+//      if(_skill === undefined){
+// ...nullObjectSkill,
+//         idCode
+//      }else{
+//         ..._skill,
+//         idCode
+//      }
+return db.data.skillsInfo
+}
+
 
 
 

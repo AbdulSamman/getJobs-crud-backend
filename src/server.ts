@@ -47,12 +47,6 @@ app.get("/jobsLowdb/:id",async(req:express.Request,res:express.Response)=>{
 
 
 
-app.get("/skillsLowdb",(req:express.Request,res:express.Response)=>{
-
-
-    res.json(model.getSkillsLowdb())
-})
-
 app.delete('/jobsLowdb/:id', async (req: express.Request, res: express.Response) => {
     const id = Number(req.params.id);
     const deletedObject = await model.deleteJob(id);
@@ -71,6 +65,12 @@ app.delete('/jobsLowdb/:id', async (req: express.Request, res: express.Response)
         });
     }
 });
+
+app.get("/skillsLowdb",(req:express.Request,res:express.Response)=>{
+
+    res.json(model.getSkillsLowdb())
+})
+
 
 
 

@@ -1,5 +1,6 @@
 {
     "watch": ["src"],
-    "ext": "ts,json",
-    "exec": "npm run build && node dist/server.js"
+    "ext": "ts,json,js",
+    "exec": "npm run build && node dist/server.js",
+    "ignore":"src/data/db.json"
   }
