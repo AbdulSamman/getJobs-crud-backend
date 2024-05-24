@@ -1,51 +1,6 @@
 {
   "jobs": [
     {
-      "id": 4,
-      "title": "Frontend Developer",
-      "company": "reuter onlineshop",
-      "url": "https://www.get-in-it.de/jobsuche/p206536?filter[thematic_priority]=5&filter[city][radius]=25&filter[city][city][0][lon]=13.41053&filter[city][city][0][lat]=52.52437&start=0&limit=39&ref=Jobsuche",
-      "description": "Successfully completed studies with a focus on computer science, a similar education or relevant professional experience\nVery good knowledge in React or similar\nGood knowledge of HTML, CSS, JavaScript and Jest/Mocha\nTypeScript, Gitlab, Next.js, styled-components, Storybook and Webpack sound familiar to you\nInspire with your innovative thinking and don't lose sight of the big picture\nGet actively involved in professional discussions",
-      "skillList": "react, jest, mocha, typescript, gitlab, nextjs, styledcomponents, storybook, webpack",
-      "publicationDate": "2022-12-06"
-    },
-    {
-      "id": 5,
-      "title": "Frontend Developer und Consultant",
-      "company": "codecentric",
-      "url": "https://www.get-in-it.de/jobsuche/p206964?filter[thematic_priority]=5&filter[city][radius]=25&filter[city][city][0][lon]=13.41053&filter[city][city][0][lat]=52.52437&start=0&limit=39&ref=Jobsuche",
-      "description": "Du hast ein tiefes, technisches Verständnis von Webtechnologien, wie JavaScript, TypeScript, HTML5 und CSS3 sowie Angular, ReactJS und/oder VueJS\n    Du kennst dich mit CSS-Präprozessoren und CSS-Architekturen aus\n    Du bist vertraut mit der Cross-Browser-Problematik\n    Du bist sicher im Umgang mit modernen Buildtools (z. B. Fuse-Box, Rollup, Webpack) und hast Kenntnisse aktueller Testing Frameworks (z. B. Mocha, Jasmine oder Jest)\n    Du kennst die agilen Werte und arbeitest gerne in agilen Teams\n    User Experience und Responsive Design interessieren dich\n    Beratung liegt dir und du kannst dir vorstellen, unsere Kunden technologisch oder/und methodisch zu schulen. Dafür bringst du eine hohe Kommunikationsfähigkeit und verhandlungssichere Deutschkenntnisse mit",
-      "skillList": "typescript, angular, react, vue, fusebox, rollup,webpack, mocha, jasmine, jest, ux, responsive",
-      "publicationDate": "2022-12-07"
-    },
-    {
-      "id": 6,
-      "title": "Praktikant IT-Beratung Public Sector",
-      "company": "PwC",
-      "url": "https://www.stepstone.de/stellenangebote--Praktikant-Werkstudent-IT-Beratung-Public-Sector-w-m-d-Berlin-Duesseldorf-Frankfurt-a-M-Muenchen-Saarbruecken-Stuttgart-PwC--7857961-inline.html?rltr=7_7_25_seorl_m_0_0_0_0_0_0",
-      "description": "Durch relevante Studienschwerpunkte oder praktische Erfahrungen hast du Grundkenntnisse in einem der folgenden Themen:\n\n- klassische Softwareentwicklung (z. B. C/C++, Java, C#),\n\n- Webentwicklung (z.B. JavaScript, Angular, React),\n\n- (Web-) Designpattern (MVC, MVVC),\n\n- Datenhaltung (z.B. SQL, noSQL, XML, JSON),\n\n- Cloud (Azure, Google, AWS, SAP),\n\n- Konzeption von IT-Architekturen/ IT-Infrastrukturen.",
-      "skillList": "c, cplusplus, java, csharp, angular, react, mvc, mvvm, azure, aws, gcp, nosql, sql, xml, json, sap",
-      "publicationDate": "2022-12-08"
-    },
-    {
-      "id": 8,
-      "title": "Fullstack developer React framework",
-      "company": "ALTEN GmbH",
-      "url": "https://www.stepstone.de/stellenangebote--Fullstack-developer-m-f-d-React-framework-Munich-ALTEN-GmbH--8995148-inline.html?rltr=15_15_25_seorl_m_0_0_0_0_1_0",
-      "description": "\n    Successfully completed studies in computer science, electrical engineering  or similar\n    Relevant years of work experience as a Full Stack Engineer and have built and operated an application in production in the past, preferably in the area of e-commerce\n    Developing applications with React, modern JavaScript standards (ES6/ES7), HTML5 and CSS\n    Practical experiences with NoSQL data bases like MongoDB\n    Comfortable with building, deploying and operating your application as micro services in a cloud infrastructure\n    Very good knowledge of English\n",
-      "skillList": "react, mongodb, microservices, cloud",
-      "publicationDate": "2022-12-13"
-    },
-    {
-      "id": 9,
-      "title": "Junior-Softwareentwickler:in",
-      "company": "Qnips GmbH",
-      "url": "https://www.stepstone.de/stellenangebote--Junior-Softwareentwickler-in-Hannover-Qnips-GmbH--7783712-inline.html?rltr=5_5_25_seorl_m_0_0_0_0_1_0",
-      "description": "Du bringst viel Interesse an modernen IT-Systemen, neuen Frameworks & Programmiersprachen mit \nDu bist fit in der Programmierung und fühlst dich in einem der nachfolgenden Bereiche wohl. Wir finden den passenden Tech-Stack für dich! \n\n    Android: Kotlin und Jetpack Compose \n     iOS: Swift und Swift UI \n     Backend Development: C#, .NET, Google Firebase, Cloud functions \n     Hybride App Development: Flutter mit Dart \n     Web Development: Angular, TypeScript-Framworks\n\nIdealerweise besitzt Du Kenntnisse im Umgang mit (RESTful-) Webservices sowie Git als Versionsverwaltung.  \nDu hast ein großes Herz für gute User Experience, durchdachtes Interface Design oder state-of-the-art API-Design ",
-      "skillList": "kotlin, jetpackcompose, swift, csharp, dotnet, firebase, flutter, dart, angular, rest, git",
-      "publicationDate": "2022-12-14"
-    },
-    {
       "id": 10,
       "title": "Backend Developer Node/Typescript",
       "company": "Interhyp Gruppe",

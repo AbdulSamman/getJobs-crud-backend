@@ -59,10 +59,16 @@ app.delete('/jobsLowdb/:id', async (req: express.Request, res: express.Response)
     if (deletedObject === undefined) {
         res.status(409).send({
             error: true,
-            message: `job with id ${id} does not exist, deletion failed`
+            message: `article with id ${id} does not exist, delete failed`
         })
     } else {
-        res.status(200).json(deletedObject);
+        res.status(200).send({  error:true,
+            message: `article with this ${id} has been  deleted, success`,
+            article: deletedObject
+
+
+
+        });
     }
 });
 
