@@ -8,3 +8,12 @@ GET {{url}}/jobs
 
 ### GET skills route
 GET {{url}}/skills
+
+
+// lowdb
+### GET a job
+GET {{url}}/jobsLowdb/3
+### DELETE a job
+DELETE {{url}}/jobsLowdb/3
+
+

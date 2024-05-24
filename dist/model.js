@@ -10,8 +10,20 @@ const dbFile = join(__dirname, `../src/data/db.json`);
 const adapter = new JSONFile(dbFile);
 const db = new Low(adapter, 0);
 await db.read();
-export const getTest = () => {
-    return db.data.test;
+export const getJobsLowdb = () => {
+    return db.data.jobs;
+};
+export const getSkillsLowdb = () => {
+    //     const skillInfos:any=db.data.skillsInfo
+    //     const _skill=skillInfos[idCode]
+    //      if(_skill === undefined){
+    // ...nullObjectSkill,
+    //         idCode
+    //      }else{
+    //         ..._skill,
+    //         idCode
+    //      }
+    return db.data.skillsInfo;
 };
 const jobsRaw = JSON.parse(fs.readFileSync("./src/data/jobs.json", "utf8"));
 const skillsRaw = JSON.parse(fs.readFileSync("./src/data/skills.json", "utf8"));
@@ -55,17 +67,30 @@ const buildSkills = (skillList) => {
     });
     return skills;
 };
+// delete a job
+//lowdb
+export const deleteJob = async (id) => {
+    const deletedObject = db.data.jobs.find((m) => m.id === id);
+    db.data.jobs = db.data.jobs.filter((m) => m.id !== id);
+    await db.write();
+    return deletedObject;
+};
+// get a job lowdb
+export const getaJob = async (id) => {
+    const job = db.data.jobs.find((m) => m.id === id);
+    return job;
+};
 export const getApiDocHTML = () => {
     return `
     <h1>GET A JOB API</h1>
     <li>
     <a href="http://localhost:3066/jobs">/jobs</a> return an array of job objects
     <li>
-    <a href="http://localhost:3066/jobsTodos">/jobsTodos</a> return added todos to row job
+    <a href="http://localhost:3066/skillsLowdb">/skillsLowdb</a> skills from lowdb
     </li>
     <li>
 
-    <a href="http://localhost:3066/todos">/todos</a> return an seperate todos
+    <a href="http://localhost:3066/jobsLowdb">/jobsLowdb</a> jobs from lowdb
     </li>
     <li>
     <a href="http://localhost:3066/skills">/skills</a> return an array of skills objects

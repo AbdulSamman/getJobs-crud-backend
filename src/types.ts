@@ -30,7 +30,7 @@ export type Job = {
     skills: RawSkill[]
     toDo:ToDo
   };
-export const nullObjectSkill ={
+export const nullObjectSkill = {
     idCode:"",
     name:"",
     url:"",

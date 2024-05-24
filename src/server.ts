@@ -9,23 +9,64 @@ const app = express()
 const port = process.env.PORT || 3005
 app.use(cors())
 
-app.get("/",(req,res)=>{
+app.get("/",(req:express.Request,res:express.Response)=>{
     res.send(model.getApiDocHTML())
 })
 
-// lowdb
-app.get("/test",(req,res)=>{
-    res.send(model.getTest())
-})
-
-
-app.get("/jobs",(req,res)=>{
+app.get("/jobs",(req:express.Request,res:express.Response)=>{
     res.json(model.getJobs())
 })
 
-app.get("/skills",(req,res)=>{
+app.get("/skills",(req:express.Request,res:express.Response)=>{
     res.json(model.getSkills())
 })
+
+
+
+// lowdb
+app.get("/jobsLowdb",(req:express.Request,res:express.Response)=>{
+    res.send(model.getJobsLowdb())
+})
+
+app.get("/jobsLowdb/:id",async(req:express.Request,res:express.Response)=>{
+    const id = Number(req.params.id)
+    const getaJob = await model.getaJob(id);
+
+    if(!getaJob){
+
+        res.status(404).send({
+        error:true,
+        message: `job with this ${id} does not exist, failed`
+    })
+}else{
+
+    res.status(200).json(getaJob);
+}
+})
+
+
+
+
+app.get("/skillsLowdb",(req:express.Request,res:express.Response)=>{
+
+
+    res.json(model.getSkillsLowdb())
+})
+
+app.delete('/jobsLowdb/:id', async (req: express.Request, res: express.Response) => {
+    const id = Number(req.params.id);
+    const deletedObject = await model.deleteJob(id);
+    if (deletedObject === undefined) {
+        res.status(409).send({
+            error: true,
+            message: `job with id ${id} does not exist, deletion failed`
+        })
+    } else {
+        res.status(200).json(deletedObject);
+    }
+});
+
+
 
 
 
