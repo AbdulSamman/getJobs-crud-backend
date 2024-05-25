@@ -42,3 +42,8 @@ export type ToDo={
     url:string
 }
 
+export  type ISkillLowdb ={
+   skill:RawSkill,
+    total:number
+}
+

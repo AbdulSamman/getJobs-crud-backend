@@ -1,5 +1,6 @@
 import fs from "fs";
 import { nullObjectSkill } from "./types.js";
+import * as model from "./model.js";
 // lowdb ist db liest json datei
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -93,6 +94,30 @@ export const getSkillsLowdb = () => {
     //         idCode
     //      }
     return db.data.skillsInfo;
+};
+export const getSkillTotals = () => {
+    try {
+        const skillTotals = [];
+        model.getJobsLowdb().forEach(job => {
+            job.skills.forEach(skill => {
+                const existingSkillTotal = skillTotals.find(skillTotal => skillTotal.skill.name === skill.idCode);
+                if (!existingSkillTotal) {
+                    skillTotals.push({
+                        skill,
+                        total: 1
+                    });
+                }
+                else {
+                    existingSkillTotal.total++;
+                }
+                console.log("ada", existingSkillTotal);
+            });
+        });
+        return skillTotals;
+    }
+    catch (error) {
+        return { status: "error", errors: ["no access --"] };
+    }
 };
 export const getApiDocHTML = () => {
     return `

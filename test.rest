@@ -12,7 +12,7 @@ GET {{url}}/skills
 
 // lowdb
 ### GET a job
-GET {{url}}/jobsLowdb/4
+GET {{url}}/jobsLowdb/60
 ### DELETE a job
 DELETE {{url}}/jobsLowdb/59
 

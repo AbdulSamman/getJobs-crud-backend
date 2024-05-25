@@ -1,6 +1,6 @@
 import fs from "fs"
-import { Job, JobRaw, RawSkill,nullObjectSkill } from "./types.js"
-
+import { ISkillLowdb, Job, JobRaw, RawSkill,nullObjectSkill } from "./types.js"
+import * as model from "./model.js"
 // lowdb ist db liest json datei
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url'
@@ -108,7 +108,47 @@ export const getSkillsLowdb=()=>{
 //         ..._skill,
 //         idCode
 //      }
+
+
 return db.data.skillsInfo
+}
+
+
+export const getSkillTotals = () => {
+
+
+try {
+	const skillTotals: ISkillLowdb[] = [];
+
+
+    model.getJobsLowdb().forEach(job => {
+        job.skills.forEach(skill => {
+
+			const existingSkillTotal = skillTotals.find(skillTotal => skillTotal.skill.name === skill.idCode);
+
+
+			if (!existingSkillTotal ) {
+				skillTotals.push({
+					skill,
+					total: 1
+
+				});
+
+			} else {
+                existingSkillTotal.total++;
+			}
+            console.log("ada",existingSkillTotal);
+
+
+		});
+
+	})
+
+    return skillTotals;
+} catch (error) {
+    return { status: "error", errors: ["no access --"] };
+
+}
 }
 
 

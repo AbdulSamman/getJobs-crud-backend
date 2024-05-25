@@ -68,8 +68,11 @@ app.delete('/jobsLowdb/:id', async (req: express.Request, res: express.Response)
 
 app.get("/skillsLowdb",(req:express.Request,res:express.Response)=>{
 
-    res.json(model.getSkillsLowdb())
+    //res.json(model.getSkillsLowdb())
+    res.json(model.getSkillTotals())
 })
+
+
 
 
 
