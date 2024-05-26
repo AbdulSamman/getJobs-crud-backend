@@ -65,13 +65,7 @@ const buildSkills = (skillList:string)=>{
 }
 // delete a job
 //lowdb
-export const deleteJob=async(id:number)=>{
-    const deletedObject = db.data.jobs.find((m: Job) => m.id === id);
 
-db.data.jobs = db.data.jobs.filter((m:Job)=>m.id !== id)
-await db.write()
-return deletedObject
-}
 
 // get a job lowdb
 export const getaJob =async(id:number)=>{
@@ -141,7 +135,13 @@ try {
 }
 
 
+export const deleteJob=async(id:number)=>{
+    const deletedObject = db.data.jobs.find((m: Job) => m.id === id);
 
+db.data.jobs = db.data.jobs.filter((m:Job)=>m.id !== id)
+await db.write()
+return deletedObject
+}
 
 
 

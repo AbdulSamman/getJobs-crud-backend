@@ -56,12 +56,6 @@ const buildSkills = (skillList) => {
 };
 // delete a job
 //lowdb
-export const deleteJob = async (id) => {
-    const deletedObject = db.data.jobs.find((m) => m.id === id);
-    db.data.jobs = db.data.jobs.filter((m) => m.id !== id);
-    await db.write();
-    return deletedObject;
-};
 // get a job lowdb
 export const getaJob = async (id) => {
     const job = db.data.jobs.find((m) => m.id === id);
@@ -111,6 +105,12 @@ export const getSkillTotals = () => {
     catch (error) {
         return { status: "error", errors: ["no access --"] };
     }
+};
+export const deleteJob = async (id) => {
+    const deletedObject = db.data.jobs.find((m) => m.id === id);
+    db.data.jobs = db.data.jobs.filter((m) => m.id !== id);
+    await db.write();
+    return deletedObject;
 };
 export const getApiDocHTML = () => {
     return `
