@@ -37,12 +37,12 @@ export const getJobs=()=>{
 export const getSkills =()=>{
     return skillsRaw
 }
-
 const buildSkills = (skillList:string)=>{
     const skills:RawSkill[]=[];
     const skillIdCodes=skillList.split(",").map((m)=>m.trim())
     skillIdCodes.forEach((skillIdCode)=>{
         const _skill = skillsRaw[skillIdCode];
+
         if(_skill===undefined){
             const skill: RawSkill={
                 ...nullObjectSkill,
@@ -52,14 +52,17 @@ const buildSkills = (skillList:string)=>{
         }else{
             const skill:RawSkill={
                 ..._skill,
-                skillIdCode
+                idCode: skillIdCode
             }
+
             skills.push(skill);
         }
+
+
     })
+
     return skills
 }
-
 // delete a job
 //lowdb
 export const deleteJob=async(id:number)=>{
@@ -78,11 +81,14 @@ export const getaJob =async(id:number)=>{
 }
 
 
-export const getJobsLowdb=()=>{
-    const _jobs:any =db.data.jobs
+export const getJobsLowdb=():Job[]=>{
+
+    try {
+
+    const _jobs:Job[] =db.data.jobs
     const jobs : Job[]=[];
-    _jobs.forEach((jobRaw:Job)=>{
-        const job : Job= {
+    _jobs.forEach((jobRaw)=>{
+        const job = {
             ...jobRaw,
             skills: buildSkills(jobRaw.skillList),
             toDo:{
@@ -92,64 +98,50 @@ export const getJobsLowdb=()=>{
         }
         jobs.push(job)
     })
+
     return jobs
+} catch (error) {
+    return error;
+
 }
-
-
-
-export const getSkillsLowdb=()=>{
-
-//     const skillInfos:any=db.data.skillsInfo
-//     const _skill=skillInfos[idCode]
-//      if(_skill === undefined){
-// ...nullObjectSkill,
-//         idCode
-//      }else{
-//         ..._skill,
-//         idCode
-//      }
-
-
-return db.data.skillsInfo
 }
 
 
 export const getSkillTotals = () => {
 
-
 try {
 	const skillTotals: ISkillLowdb[] = [];
+    const jobs :Job[]=   model.getJobsLowdb();
 
 
-    model.getJobsLowdb().forEach(job => {
-        job.skills.forEach(skill => {
+   jobs.forEach(job => {
 
-			const existingSkillTotal = skillTotals.find(skillTotal => skillTotal.skill.name === skill.idCode);
+       job.skills.forEach(skill => {
+
+			const existingSkillTotal = skillTotals.find(skillTotal => skillTotal.skill.idCode === skill.idCode);
 
 
 			if (!existingSkillTotal ) {
 				skillTotals.push({
 					skill,
 					total: 1
-
 				});
 
 			} else {
-                existingSkillTotal.total++;
+                existingSkillTotal.total++
+
 			}
-            console.log("ada",existingSkillTotal);
-
-
 		});
 
 	})
-
     return skillTotals;
 } catch (error) {
     return { status: "error", errors: ["no access --"] };
+}
+}
 
-}
-}
+
+
 
 
 
